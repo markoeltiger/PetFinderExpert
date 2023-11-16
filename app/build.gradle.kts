@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -16,7 +18,34 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        val properties = Properties()
+        val apiKey: String
+        val apiSecret: String
 
+        val localPropertiesFile = project.rootProject.file("local.properties")
+        apiKey = if (localPropertiesFile.exists()) {
+            properties.load(localPropertiesFile.inputStream())
+            properties.getProperty("API_KEY") ?: ""
+        } else {
+            System.getenv("API_KEY") ?: ""
+        }
+        apiSecret = if (localPropertiesFile.exists()) {
+            properties.load(localPropertiesFile.inputStream())
+            properties.getProperty("API_SECERET") ?: ""
+        } else {
+            System.getenv("API_SECERET") ?: ""
+        }
+
+        buildConfigField(
+            "String",
+            "API_KEY",
+            "\"$apiKey\""
+        )
+        buildConfigField(
+            "String",
+            "API_SECERET",
+            "\"$apiSecret\""
+        )
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -42,6 +71,8 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
