@@ -10,6 +10,8 @@ data class Type(
     val colors: List<String>,
     @SerializedName("genders")
     val genders: List<String>,
+    @SerializedName("_links")
+    val links: Links,
     @SerializedName("name")
     val name: String
 )
