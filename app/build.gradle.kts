@@ -133,8 +133,6 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1")
-    //Glide
-    implementation("com.github.skydoves:landscapist-glide:1.3.6")
     //Testing
     testImplementation ("junit:junit:4.13.2")
     testImplementation ("org.mockito:mockito-core:2.11.0")
@@ -142,5 +140,7 @@ dependencies {
     testImplementation ("com.google.truth:truth:1.1")
     // For Robolectric tests.
     testImplementation("com.google.dagger:hilt-android-testing:2.28-alpha")
+    //Coil Image
+    implementation("io.coil-kt:coil-compose:2.5.0")
 
 }

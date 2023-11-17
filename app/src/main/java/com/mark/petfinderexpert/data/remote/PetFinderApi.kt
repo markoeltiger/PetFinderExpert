@@ -2,10 +2,12 @@ package com.mark.petfinderexpert.data.remote
 
 import com.mark.petfinderexpert.BuildConfig
 import com.mark.petfinderexpert.data.remote.models.auth.TokenResponse
+import com.mark.petfinderexpert.data.remote.models.pet_types.PetTypesResponse
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Query
 
@@ -19,8 +21,12 @@ interface PetFinderApi {
         @Field("client_secret") secret: String = BuildConfig.API_SECERET
     ): TokenResponse
 
+    @GET("types")
+    suspend fun getPetTypes(@Header("Authorization") authHeader:String): PetTypesResponse
+
+
     companion object {
-        const val BASE_URL = "https://api.petfinder.com/v2/oauth2/"
+        const val BASE_URL = "https://api.petfinder.com/v2/"
 
     }
 }

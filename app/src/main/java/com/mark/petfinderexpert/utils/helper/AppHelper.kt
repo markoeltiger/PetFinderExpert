@@ -1,4 +1,4 @@
-package com.mark.moviemaster.utils.helper
+package com.mark.petfinderexpert.utils.helper
 
 import androidx.compose.ui.graphics.Color
  import kotlin.random.Random

@@ -19,7 +19,7 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideStockApi(): PetFinderApi {
+    fun providePetFinderApi(): PetFinderApi {
         return Retrofit.Builder()
             .baseUrl(PetFinderApi.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

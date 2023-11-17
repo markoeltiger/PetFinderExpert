@@ -10,9 +10,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.mark.petfinderexpert.ui.theme.PetFinderExpertTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.mark.petfinderexpert.presentation.ui.navigation.Routes
+import com.mark.petfinderexpert.presentation.ui.petslist.PetsListScreen
+import com.mark.petfinderexpert.presentation.ui.theme.PetFinderExpertTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -22,25 +30,28 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
-                }
+                    val navController = rememberNavController()
+
+                    NavHost(
+                        navController = navController,
+                        startDestination = Routes.PetsListScreen.route
+                    ) {
+                        composable(
+                            route = Routes.PetsListScreen.route
+                        ) {
+                            PetsListScreen(navController)
+                        }
+                        composable(
+                            route = Routes.PetDetailScreen.route
+                        ) {
+
+                        }
+
+
+                    }                }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PetFinderExpertTheme {
-        Greeting("Android")
-    }
-}
