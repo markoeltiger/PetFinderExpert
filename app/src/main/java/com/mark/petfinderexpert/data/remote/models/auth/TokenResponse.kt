@@ -6,9 +6,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class TokenResponse(
     @SerialName("token_type")
-    val tokenType: String,
+    val token_type: String,
     @SerialName("expires_in")
-    val expiresIn: Int,
+    val expires_in: Int,
     @SerialName("access_token")
-    val accessToken: String
+    val access_token: String
 )
