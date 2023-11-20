@@ -3,6 +3,7 @@ package com.mark.petfinderexpert.data.remote
 import com.mark.petfinderexpert.BuildConfig
 import com.mark.petfinderexpert.data.remote.models.auth.TokenResponse
 import com.mark.petfinderexpert.data.remote.models.pet_types.PetTypesResponse
+import com.mark.petfinderexpert.data.remote.models.pets.PetsResponse
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -23,6 +24,8 @@ interface PetFinderApi {
 
     @GET("types")
     suspend fun getPetTypes(@Header("Authorization") authHeader:String): PetTypesResponse
+    @GET("animals")
+    suspend fun getPets(@Header("Authorization") authHeader:String): PetsResponse
 
 
     companion object {
