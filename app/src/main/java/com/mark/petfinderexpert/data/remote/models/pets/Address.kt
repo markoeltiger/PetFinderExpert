@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 
 data class Address(
     @SerializedName("address1")
-    val address1: Any,
+    val address1: String,
     @SerializedName("address2")
-    val address2: Any,
+    val address2: String,
     @SerializedName("city")
     val city: String,
     @SerializedName("country")

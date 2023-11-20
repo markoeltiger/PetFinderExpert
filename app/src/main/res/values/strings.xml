@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">PetFinderExpert</string>
+    <string name="pet_details">Pet Details</string>
+
     <string name="pet_name">Name : </string>
     <string name="pet_gender">Gender : </string>
     <string name="pet_type">Type : </string>
+    <string name="pet_size">Size : </string>
+    <string name="pet_primary_color">Color : </string>
+    <string name="pet_address">Address : </string>
+
 </resources>
