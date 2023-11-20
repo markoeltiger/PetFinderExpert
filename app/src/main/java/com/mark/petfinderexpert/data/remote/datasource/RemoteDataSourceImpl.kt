@@ -63,10 +63,10 @@ class RemoteDataSourceImpl @Inject constructor(
     }
 
     // Make Pets Response
-    override suspend fun getPets(): Flow<Resource<PetsResponse>> {
+    override suspend fun getPets(type:String): Flow<Resource<PetsResponse>> {
         return flow<Resource<PetsResponse>> {
             try {
-                var typesResponse = api.getPets(sessionManager.fetchAuthToken()!!)
+                var typesResponse = api.getPets(sessionManager.fetchAuthToken()!!,type)
                 emit(Resource.Success(typesResponse))
             } catch (e: IOException) {
                 e.printStackTrace()
