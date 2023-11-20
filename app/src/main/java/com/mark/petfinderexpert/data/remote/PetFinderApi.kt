@@ -25,7 +25,7 @@ interface PetFinderApi {
     @GET("types")
     suspend fun getPetTypes(@Header("Authorization") authHeader:String): PetTypesResponse
     @GET("animals")
-    suspend fun getPets(@Header("Authorization") authHeader:String): PetsResponse
+    suspend fun getPets(@Header("Authorization") authHeader:String ,@Query("type") type: String): PetsResponse
 
 
     companion object {

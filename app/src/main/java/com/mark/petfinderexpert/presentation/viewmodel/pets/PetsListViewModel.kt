@@ -2,6 +2,8 @@ package com.mark.petfinderexpert.presentation.viewmodel.pets
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.mark.moviemaster.presentation.ui.movies.events.PetListingEvent
+import com.mark.petfinderexpert.data.remote.models.pet_types.Type
 import com.mark.petfinderexpert.domain.usecase.GetPetTypesUseCase
 import com.mark.petfinderexpert.domain.usecase.GetPetsUseCase
 import com.mark.petfinderexpert.domain.usecase.RefreshTokenUseCase
@@ -31,7 +33,13 @@ class PetsListViewModel @Inject constructor(
         getPetTypes()
         getPets()
       }
-
+    fun onEvent(event: PetListingEvent) {
+        when (event) {
+            is PetListingEvent.onPetGenreSelection -> {
+                getPets(type = event.type)
+            }
+        }
+    }
       fun getToken() {
         viewModelScope.launch() {
         refreshTokenUseCase.refreshToken().collect{
@@ -46,9 +54,17 @@ class PetsListViewModel @Inject constructor(
                 petTypes.update {
                     when (types) {
                         is Resource.Success -> {
-                            it.copy(
-                                types = types.data!!.types
+                             it.copy(
+
+                                types = listOf(
+                                    Type(
+                                        emptyList(), emptyList(),
+                                        emptyList(), "All"
+                                    )
+                                )+types.data!!.types
+
                             )
+
                         }
                         else -> {
                             it.copy(
@@ -64,9 +80,9 @@ class PetsListViewModel @Inject constructor(
         }
 
     }
-    fun getPets() {
+    fun getPets(type:String?=null) {
         viewModelScope.launch() {
-            getPetsUseCase.getPets().collect { pets ->
+            getPetsUseCase.getPets(type).collect { pets ->
                 petTypes.update {
                     when (pets) {
                         is Resource.Success -> {

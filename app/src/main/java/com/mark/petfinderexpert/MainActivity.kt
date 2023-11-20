@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.mark.petfinderexpert.presentation.ui.navigation.Routes
+import com.mark.petfinderexpert.presentation.ui.petdetails.PetDetailsScreen
 import com.mark.petfinderexpert.presentation.ui.petslist.PetsListScreen
 import com.mark.petfinderexpert.presentation.ui.theme.PetFinderExpertTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,11 +45,13 @@ class MainActivity : ComponentActivity() {
                         composable(
                             route = Routes.PetDetailScreen.route
                         ) {
+                            PetDetailsScreen(navController)
 
                         }
 
 
-                    }                }
+                    }
+                }
             }
         }
     }

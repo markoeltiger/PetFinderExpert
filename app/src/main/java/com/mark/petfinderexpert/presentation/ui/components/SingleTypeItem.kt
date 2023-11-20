@@ -35,9 +35,9 @@ fun SingleTypeItem(
         colorResource(id = R.color.card_background), Color.White, Color.Black, Color.Black
     ),
         modifier = Modifier
-            .clickable { onItemClick(type) }
-
-            .padding(vertical = 16.dp, horizontal = 12.dp)
+            .clickable { onItemClick(type)
+            }
+            .padding(vertical = 8.dp, horizontal = 4.dp)
      ) {
         Text(text = type.name , modifier = Modifier.padding(10.dp))
 

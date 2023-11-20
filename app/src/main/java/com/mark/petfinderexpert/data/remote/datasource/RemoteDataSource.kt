@@ -9,6 +9,6 @@ import kotlinx.coroutines.flow.Flow
 interface RemoteDataSource {
     suspend fun refreshToken(): Flow<Resource<TokenResponse>>
     suspend fun petTypes(): Flow<Resource<PetTypesResponse>>
-    suspend fun getPets(): Flow<Resource<PetsResponse>>
+    suspend fun getPets(type:String): Flow<Resource<PetsResponse>>
 
 }
