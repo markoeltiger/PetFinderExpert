@@ -7,5 +7,5 @@ data class PetsResponse(
     @SerializedName("animals")
     val animals: List<Animal>,
     @SerializedName("pagination")
-    val pagination: Pagination
+    val pagination: Pagination?
 )
