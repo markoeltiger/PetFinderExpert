@@ -93,6 +93,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("com.google.android.gms:play-services-basement:18.2.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -105,6 +106,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1")
+
     //daggerhilt
     implementation( "com.google.dagger:hilt-android:2.44")
     implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
@@ -138,6 +141,19 @@ dependencies {
     testImplementation ("org.mockito:mockito-core:2.11.0")
     testImplementation ("android.arch.core:core-testing:1.1.1")
     testImplementation ("com.google.truth:truth:1.1")
+    debugImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+    androidTestImplementation ("org.mockito.kotlin:mockito-kotlin:4.1.0")
+    androidTestImplementation ("io.mockk:mockk-android:1.12.3")
+    androidTestImplementation ("org.mockito:mockito-android:5.7.0")
+    testImplementation ("org.mockito.kotlin:mockito-kotlin:4.1.0")
+    testImplementation ("io.mockk:mockk:1.12.3")
+    testImplementation ("app.cash.turbine:turbine:1.0.0")
+    testImplementation ("org.hamcrest:hamcrest:2.2")
+    testImplementation ("org.hamcrest:hamcrest-library:2.2")
+    testImplementation ("org.amshove.kluent:kluent:1.69")
+    testImplementation ("org.amshove.kluent:kluent-android:1.69")
+    testImplementation ("org.mockito:mockito-inline:3.11.2")
+
     // For Robolectric tests.
     testImplementation("com.google.dagger:hilt-android-testing:2.28-alpha")
     //Coil Image

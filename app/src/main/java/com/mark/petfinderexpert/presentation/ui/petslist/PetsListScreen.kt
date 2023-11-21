@@ -8,6 +8,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -20,9 +21,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mark.moviemaster.presentation.ui.movies.events.PetListingEvent
@@ -48,6 +53,7 @@ fun PetsListScreen(
             titleContentColor = MaterialTheme.colorScheme.primary,
         )
         )
+
         //List of Categories
         LazyRow {
             items(petsListUIState!!.types.size) { type ->
@@ -60,6 +66,10 @@ fun PetsListScreen(
                 )
             }
         }
+if (petsListUIState.isLoading){
+    CircularProgressIndicator(modifier = Modifier.align(CenterHorizontally))
+}
+
         LazyColumn {
             items(petsListUIState.pets.size) { pet ->
                 SinglePetItem(

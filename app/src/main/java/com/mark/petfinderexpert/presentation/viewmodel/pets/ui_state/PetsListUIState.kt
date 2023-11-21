@@ -8,4 +8,6 @@ data class PetsListUIState(
     val pets: List<Animal> = emptyList(),
     val msg:String = "",
     val isError:Boolean =false,
-                        )
+    val isLoading:Boolean =true,
+
+    )

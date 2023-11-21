@@ -87,7 +87,8 @@ class PetsListViewModel @Inject constructor(
                     when (pets) {
                         is Resource.Success -> {
                             it.copy(
-                                pets =pets.data!!.animals
+                                pets =pets.data!!.animals,
+                                isLoading = false
                             )
                         }
                         else -> {
